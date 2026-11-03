@@ -54,7 +54,12 @@ export function verifierPlant(saisie, plants) {
 
 // Fabrique le plant à enregistrer à partir d'une saisie VALIDE : nombrePlants devient un nombre.
 export function creerPlant(saisie) {
- 
+  const nouveauplant= {
+    id: saisie.id.trim(),nomCommun:saisie.nomCommun.trim(),groupe:saisie.groupe.trim(),
+    nombrePlants: versNombre(saisie.nombrePlants),dateReleve: saisie.dateReleve.trim(),
+  };
+  return nouveauplant;
+
 }
 
 // Ajoute la saisie à l'inventaire si elle est valide (verifierPlant, puis creerPlant).
