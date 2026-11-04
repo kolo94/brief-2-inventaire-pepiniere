@@ -21,7 +21,7 @@ async function main() {
  // initialisation du tableau vide let plants=[];
  let plants= [];
  try {
-  plants= await chargerJson(FICHIEER_DONNES);
+  plants = await chargerJson(FICHIER_DONNEES);
   console.log(`${plants.length} espèce(s) chargée(s) depuis ${FICHIER_DONNEES}.`);
  }
  catch(erreur) {
@@ -33,28 +33,32 @@ async function main() {
  while(continuer) {
   // Afficher le menu
   console.log('\n=== MENU ===');
-  console.log('1. Ajouter un plant');
-  console.log('2. Lister les plants');
+  console.log('1. lister un plant');
+  console.log('2. ajout un plants');
   console.log('3. Rechercher un plant parId)');
-  console.log('4. trouver par nom') 
+  console.log('4. Trouver par nom') 
   console.log('5. Filtrer par groupe');
   console.log('6. Trier par nombre de plants');
-  console.log('9. Voir le stockes faibles(seuil${SEUIL_STOCK_FAIBLE})');
-  console.log('8. synthese par groupe');
-  console.log('9. total et plus abondante');
+console.log(`7. Voir les stocks faibles (seuil ${SEUIL_STOCK_FAIBLE})`);
+  console.log('8. Synthese par groupe');
+  console.log('9. Total et plus abondante');
   console.log('0. Quitter');
 
   const choix = (await demander('Votre choix : ')).trim();
   try{
     if (choix=== '0'||choix.toLowerCase()=== 'q') {
       console.log ("Au revoir ! ");
-      break,
+      break
     }
-    if (choix === '1') {
-      const liste = listerPlants(plants);
-      if (liste.length ===0) console.log("aucun plant.");
-      else liste.forEach(p =>  console.log(formaterPlant(p)));
-  }
+   // if (choix === '1') {
+      if (choix === '1') {
+  console.log(listerPlants(plants));
+}
+
+     // const liste = listerPlants(plants);
+      //if (liste.length ===0) console.log("aucun plant.");
+     // else liste.forEach(p =>  console.log(formaterPlant(p)));
+  //}
   if( choix==='2') {
     console.log(`Groupes autorisés : ${GROUPES.join(',')}`);
   const id = await demander("id (ex: N11):");
@@ -78,13 +82,13 @@ async function main() {
         const id = await demander("Id a trouver : ");
         const trouve = trouverParId(plants, id);
         if (trouve) console.log(formaterPlant(trouve));
-        else console.log(Id ${id} non trouve.);
+        else console.log(`Id ${id} non trouve.`);
   }
   else if (choix ==='4' ) {
   const texte = await  demander(" texte a chercher :");
   const res =  rechercherParNom(plants, texte);
   console.log(`${res.length} resultat(s) `);
-  res.forEach( p =>console.log(formanterPlant(p)));
+  res.forEach( p =>console.log(formaterPlant(p)));
   
 
 }
@@ -99,13 +103,13 @@ else if (choix ==='6') {
   tries.forEach(p=> console.log(formaterPlant(p)));
 }
 else if (choix ==='7') {
-  / DIFFERENT : filtre avec <= seuil
+  //DIFFERENT : filtre avec <= seuil
         const faibles = stocksFaibles(plants, SEUIL_STOCK_FAIBLE);
-        console.log(${faibles.length} en stock faible (<= ${SEUIL_STOCK_FAIBLE}) :);
+        console.log(`${faibles.length} en stock faible (<= ${SEUIL_STOCK_FAIBLE}) :`);
         faibles.forEach(p => console.log(formaterPlant(p)));
   }
 
-}
+
 else if (choix==='8') {
   const synth = syntheseParGroupe(plants);
   console.log(synth);
@@ -126,7 +130,8 @@ else if (choix ==='9') {
     console.log("Erreur:" + e.message);
   }
  }
- fermerSaisie();
 }
+ main().finally(() => {
+  fermerSaisie();
+});
 
-main();
