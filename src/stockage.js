@@ -8,7 +8,6 @@ export async function chargerJson(chemin) {
   const texte = await readFile(chemin, 'utf8');
   return JSON.parse(texte);
 }
-
 // Écrit le tableau dans le fichier, au format JSON indenté de 2 espaces.
 export async function enregistrerJson(chemin, enregistrements) {
   const tableau = JSON.stringify( enregistrements, null, 2);
