@@ -37,8 +37,8 @@ async function main() {
 
   while (continuer) {
     console.log('\n========== MENU ==========');
-    console.log('1. Lister les plants');
-    console.log('2. Ajouter un plant');
+    console.log('1. Ajouter un plant');
+    console.log('2. Lister un plant');
     console.log('3. Rechercher un plant (ID, nom, groupe)');
     console.log('4. Trier par nombre de plants');
     console.log('5. Synthèse de l’inventaire');
@@ -60,14 +60,8 @@ async function main() {
         continuer = false;
       }
 
-      // CHOIX 1 : LISTER LES PLANTS
+      // CHOIX 1 : AJOUTER UN PLANT
       else if (choix === '1') {
-        console.log('\n--- Liste des plants ---');
-        console.log(listerPlants(plants));
-      }
-
-      // CHOIX 2 : AJOUTER UN PLANT
-      else if (choix === '2') {
         console.log(`Groupes autorisés : ${GROUPES.join(', ')}`);
 
         const id = await demander('ID (ex : N11) : ');
@@ -102,6 +96,11 @@ async function main() {
             'Ajouté : ' + formaterPlant(plants[plants.length - 1])
           );
         }
+      }
+      // CHOIX 2: LISTER LES PLANTS
+      else if (choix === '2') {
+        console.log('\n--- Liste des plants ---');
+        console.log(listerPlants(plants));
       }
 
       // CHOIX 3 : RECHERCHER UN PLANT
