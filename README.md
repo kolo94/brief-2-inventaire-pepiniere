@@ -4,7 +4,9 @@
 
 ## Contexte
 
-✏️ *En cinq à huit phrases : qui utilise l'outil (son métier, son geste professionnel), son besoin, ce qu'il saisit, ce que le programme lui affiche, ce que l'outil ne fait pas.*
+L'outil est utilisé par un responsable de pépinière pédagogique (assistant de pépinière). Son geste professionnel consiste à observer les étiquettes et les organes des plantes, appliquer une classification botanique simple, puis compter les quantités disponibles. Son besoin est de structurer un inventaire dispersé pour retrouver facilement une espèce et voir les quantités. L'utilisateur saisit l'origine du relevé (étiquette, photo ou spécimen), l'espèce, le groupe botanique, ainsi que les quantités de plants. Le programme affiche un menu principal textuel permettant de lister, d'ajouter, de rechercher, de trier les plantes ou d'afficher une synthèse des quantités, tout en indiquant le nombre d'espèces chargées depuis les données. L'outil ne gère pas les identifications incertaines de manière automatisée et nécessite que les cas douteux soient signalés directement.
+
+ 
 
 ## Prérequis et lancement
 
@@ -23,22 +25,32 @@ Sous PowerShell, si `npm` est bloqué : `npm.cmd test`.
 
 ✏️ *Cochez seulement ce qui marche : `- [x]`.*
 
-- [ ] Données lues et enregistrées dans `donnees/plants.json`
-- [ ] Ajouter un plant, saisies invalides refusées sans arrêter le programme
-- [ ] Lister l'inventaire, message si l'inventaire est vide
-- [ ] Rechercher par code ou par nom ; filtrer par groupe botanique
-- [ ] Trier par nombre de plants
-- [ ] Synthèse : stock total, espèces et plants par groupe, espèce la plus abondante, stocks faibles (≤ 10 plants)
+- [x] Données lues et enregistrées dans `donnees/plants.json`
+- [x] Ajouter un plant, saisies invalides refusées sans arrêter le programme
+- [x] Lister l'inventaire, message si l'inventaire est vide
+- [x] Rechercher par code ou par nom ; filtrer par groupe botanique
+- [x] Trier par nombre de plants
+- [x] Synthèse : stock total, espèces et plants par groupe, espèce la plus abondante, stocks faibles (≤ 10 plants)
 - [ ] Bonus : supprimer et modifier un plant (choix 6 et 7)
 - [ ] Bonus : tri décroissant, groupe le plus fourni
 
 ## Données
 
-✏️ *Le fichier, le nombre de lignes, les champs (voir [docs/dictionnaire-donnees.md](docs/dictionnaire-donnees.md)), l'unité. Rappelez qu'elles sont fictives et que les groupes sont fournis par le coach.*
+*Le fichier, le nombre de lignes, les champs (voir [docs/dictionnaire-donnees.md](docs/dictionnaire-donnees.md)), l'unité. Rappelez qu'elles sont fictives et que les groupes sont fournis par le coach.*
+le fifchier est:donnees/plants.Json 
+il contient: 10 especes
+ les champs sont: id,nomCommun, groupe( angiosperme/gynosperme),dateReleve(YYYY-MM-DD);
+ unités: nombres de plants par especes
+
 
 ## Limites
 
-✏️ *Au moins trois. Par exemple : le seuil de 10 plants est un repère de suivi, pas une recommandation de production.*
+ *Au moins trois. Par exemple : le seuil de 10 plants est un repère de suivi, pas une recommandation de production.*
+les groupes sont limites a deux seulemnent.
+le fichier Json n est pas concurrentiel
+il n ya pas de gestion historique.
+le nombre de plants ne revele pas la qualite des plants.
+
 
 ## Documents
 
@@ -46,4 +58,9 @@ Sous PowerShell, si `npm` est bloqué : `npm.cmd test`.
 
 ## Auteur
 
-✏️ *Prénom NOM, compte GitHub. Entraide : avec qui, sur quoi.*
+ *Prénom NOM, compte GitHub. Entraide : avec qui, sur quoi.*
+Kolo Abel SORO  
+kolo94
+Kroman Samuel, Tokpa Odilon,
+Konan beaufils Ulrich, m ont aidé dans la  creation de compte github .egalemnt j' avais suprimé les donnees plants.Json,  il m ont aidé dans la recuperation.
+
